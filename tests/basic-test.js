@@ -1,7 +1,7 @@
-var assert = require('assert'),
+const assert = require('assert'),
     colors = require('../lib/index');
 
-var s = 'string';
+let s = 'string';
 
 function a(s, code) {
   return '\x1B[' + code.toString() + 'm' + s + '\x1B[39m';
@@ -11,16 +11,16 @@ function aE(s, color, code) {
   assert.equal(s[color], a(s, code));
   assert.equal(colors[color](s), a(s, code));
   assert.equal(s[color], colors[color](s));
-  assert.equal(s[color].strip, s);
-  assert.equal(s[color].strip, colors.strip(s));
+  assert.equal(Colors.strip, s);
+  assert.equal(Colors.strip, colors.strip(s));
 }
 
 function h(s, color) {
   return '<span style="color:' + color + ';">' + s + '</span>';
 }
 
-var stylesColors = ['white', 'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'yellow'];
-var stylesAll = stylesColors.concat(['bold', 'italic', 'underline', 'inverse', 'rainbow']);
+let stylesColors = ['white', 'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'yellow'];
+let stylesAll = stylesColors.concat(['bold', 'italic', 'underline', 'inverse', 'rainbow']);
 
 colors.mode = 'console';
 assert.equal(s.bold, '\x1B[1m' + s + '\x1B[22m');

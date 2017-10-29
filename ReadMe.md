@@ -1,12 +1,12 @@
-# colors.js [![Build Status](https://travis-ci.org/Marak/colors.js.svg?branch=master)](https://travis-ci.org/Marak/colors.js)
+# colors.ts [![Build Status](https://travis-ci.org/Shasele/colors.ts.svg?branch=master)](https://travis-ci.org/Marak/colors.ts)
 
 ## get color and style in your node.js console
 
-![Demo](https://raw.githubusercontent.com/Marak/colors.js/master/screenshots/colors.png)
+![Demo](https://raw.githubusercontent.com/Marak/colors.ts/master/screenshots/colors.png)
 
 ## Installation
 
-    npm install colors
+    npm install colorts
 
 ## colors and styles!
 

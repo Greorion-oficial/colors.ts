@@ -1,28 +1,38 @@
 {
-    "name": "colors",
-    "description": "get colors in your node.js console",
-    "version": "1.1.2",
-    "author": "Marak Squires",
-    "homepage": "https://github.com/Marak/colors.js",
-    "bugs": "https://github.com/Marak/colors.js/issues",
-    "keywords": [ "ansi", "terminal", "colors" ],
-    "repository": {
-        "type": "git",
-        "url": "http://github.com/Marak/colors.js.git"
-    },
-    "license": "MIT",
-    "scripts": {
-      "test": "node tests/basic-test.js && node tests/safe-test.js"
-    },
-    "engines": {
-        "node": ">=0.1.90"
-    },
-    "main": "lib",
-    "files": [
-        "examples",
-        "lib",
-        "LICENSE",
-        "safe.js",
-        "themes"
-    ]
+  "name": "colorts",
+  "description": "Colors in node Js console",
+  "version": "0.1.0",
+  "author": "Shadrack Ndacayisenga",
+  "homepage": "https://github.com/shaselle/colors.js",
+  "bugs": {
+    "url": "https://github.com/shaselle/colors.js/issues"
+  },
+  "keywords": [
+    "terminal",
+    "colors"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaselle/colors.js.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "node tests/basic-test.js && node tests/safe-test.js"
+  },
+  "engines": {
+    "node": ">=8.1.90"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [],
+  "devDependencies": {
+    "@types/node": "^8.0.47",
+    "tslint": "^5.8.0",
+    "typescript": "^2.5.3"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "dependencies": {}
 }

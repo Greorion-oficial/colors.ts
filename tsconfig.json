@@ -2,8 +2,13 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es2017",
-    "sourceMap": true
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "./lib"
   },
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
     "node_modules"
   ]
