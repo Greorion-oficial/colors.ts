@@ -1,50 +1,39 @@
-const assert = require('assert'),
-    colors = require('../lib/index');
+import assert = require("assert");
+import {colors} from "../lib/index";
+import {ansiStyles} from "../src/colors";
+import {Style} from "../src/styles";
 
-let s = 'string';
+const s: string = "string";
 
-function a(s, code) {
-  return '\x1B[' + code.toString() + 'm' + s + '\x1B[39m';
+function a(str: string, color: string) {
+    const code: Style = ansiStyles[color];
+    return `${code.open}${str}${code.close}`;
 }
 
-function aE(s, color, code) {
-  assert.equal(s[color], a(s, code));
-  assert.equal(colors[color](s), a(s, code));
-  assert.equal(s[color], colors[color](s));
-  assert.equal(Colors.strip, s);
-  assert.equal(Colors.strip, colors.strip(s));
+function aE(str: string, color: string) {
+    assert.equal(s[color], a(str, color));
+    assert.equal(colors[color](s), a(str, color));
+    assert.equal(s[color], colors[color](str));
+    assert.equal(colors.strip(str), str);
+    assert.equal(colors.strip(str), str.strip);
 }
 
-function h(s, color) {
-  return '<span style="color:' + color + ';">' + s + '</span>';
-}
+assert.equal(s.bold, `\x1B[1m${s}\x1B[22m`);
+assert.equal(s.italic, `\x1B[3m${s}\x1B[23m`);
+assert.equal(s.underline, `\x1B[4m${s}\x1B[24m`);
+assert.equal(s.strikethrough, `\x1B[9m${s}\x1B[29m`);
+assert.equal(s.inverse, `\x1B[7m${s}\x1B[27m`);
 
-let stylesColors = ['white', 'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'yellow'];
-let stylesAll = stylesColors.concat(['bold', 'italic', 'underline', 'inverse', 'rainbow']);
+aE(s, "white");
+aE(s, "grey");
+aE(s, "black");
+aE(s, "blue");
+aE(s, "cyan");
+aE(s, "green");
+aE(s, "magenta");
+aE(s, "red");
+aE(s, "yellow");
 
-colors.mode = 'console';
-assert.equal(s.bold, '\x1B[1m' + s + '\x1B[22m');
-assert.equal(s.italic, '\x1B[3m' + s + '\x1B[23m');
-assert.equal(s.underline, '\x1B[4m' + s + '\x1B[24m');
-assert.equal(s.strikethrough, '\x1B[9m' + s + '\x1B[29m');
-assert.equal(s.inverse, '\x1B[7m' + s + '\x1B[27m');
+assert.equal(s, "string");
 
-assert.ok(s.rainbow);
-
-aE(s, 'white', 37);
-aE(s, 'grey', 90);
-aE(s, 'black', 30);
-aE(s, 'blue', 34);
-aE(s, 'cyan', 36);
-aE(s, 'green', 32);
-aE(s, 'magenta', 35);
-aE(s, 'red', 31);
-aE(s, 'yellow', 33);
-
-assert.equal(s, 'string');
-
-colors.setTheme({error:'red'});
-
-assert.equal(typeof("astring".red),'string');
-assert.equal(typeof("astring".error),'string');
-
+assert.equal(typeof("astring".red), "string");

@@ -28,7 +28,7 @@
   "devDependencies": {
     "@types/node": "^8.0.47",
     "tslint": "^5.8.0",
-    "typescript": "^2.5.3"
+    "typescript": "^2.6.1"
   },
   "directories": {
     "lib": "lib",

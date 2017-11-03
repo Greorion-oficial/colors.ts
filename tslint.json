@@ -5,7 +5,10 @@
     ],
     "jsRules": {},
     "rules": {
-        "interface-name": [true, "never-prefix"]
+        "interface-name": [true, "never-prefix"],
+        "no-console": [false],
+        "variable-name": ["allow-leading-underscore"],
+        "only-arrow-functions": ["allow-declarations"]
     },
     "rulesDirectory": []
 }
