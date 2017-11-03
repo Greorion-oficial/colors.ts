@@ -1,4 +1,4 @@
-# colors.ts
+# colors.ts  [![Build Status](https://travis-ci.org/shaselle/colors.js.svg?branch=master)](https://travis-ci.org/shaselle/colors.js)
 
 ## get color and style in your node.js console
 
