@@ -45,20 +45,7 @@
   - hidden
   - strikethrough
 
-### extras
-
-  - rainbow
-  - zebra
-  - america
-  - trap
-  - random
-
-
 ## Usage
-
-By popular demand, `colors` now ships with two types of usages!
-
-The super nifty way
 
 ```js
 var colors = require('colors');
@@ -86,7 +73,8 @@ console.log(colors.trap('Run the trap')); // Drops the bass
 
 I prefer the first way. Some people seem to be afraid of extending `String.prototype` and prefer the second way. 
 
-If you are writing good code you will never have an issue with the first approach. If you really don't want to touch `String.prototype`, the second usage will not touch `String` native object.
+If you are writing good code you will never have an issue with the first approach. If you really don't want to
+touch `String.prototype`, the second usage will not touch `String` native object.
 
 ## Disabling Colors
 
@@ -103,76 +91,3 @@ var name = 'Marak';
 console.log(colors.green('Hello %s'), name);
 // outputs -> 'Hello Marak'
 ```
-
-## Custom themes
-
-### Using standard API
-
-```js
-
-var colors = require('colors');
-
-colors.setTheme({
-  silly: 'rainbow',
-  input: 'grey',
-  verbose: 'cyan',
-  prompt: 'grey',
-  info: 'green',
-  data: 'grey',
-  help: 'cyan',
-  warn: 'yellow',
-  debug: 'blue',
-  error: 'red'
-});
-
-// outputs red text
-console.log("this is an error".error);
-
-// outputs yellow text
-console.log("this is a warning".warn);
-```
-
-### Using string safe API
-
-```js
-var colors = require('colors/safe');
-
-// set single property
-var error = colors.red;
-error('this is red');
-
-// set theme
-colors.setTheme({
-  silly: 'rainbow',
-  input: 'grey',
-  verbose: 'cyan',
-  prompt: 'grey',
-  info: 'green',
-  data: 'grey',
-  help: 'cyan',
-  warn: 'yellow',
-  debug: 'blue',
-  error: 'red'
-});
-
-// outputs red text
-console.log(colors.error("this is an error"));
-
-// outputs yellow text
-console.log(colors.warn("this is a warning"));
-
-```
-
-### Combining Colors
-
-```javascript
-var colors = require('colors');
-
-colors.setTheme({
-  custom: ['red', 'underline']
-});
-
-console.log('test'.custom);
-```
-
-*Protip: There is a secret undocumented style in `colors`. If you find the style you can summon him.*
