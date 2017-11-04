@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "node tests/basic-test.js && node tests/safe-test.js"
+    "test": "node tests/test.js"
   },
   "engines": {
     "node": ">=8.1.90"
