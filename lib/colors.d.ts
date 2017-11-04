@@ -86,7 +86,6 @@ export declare class Colors {
     magenta: Stylettes;
     red: Stylettes;
     strikethrough: Stylettes;
-    stripColors: (str: string) => string;
     underline: Stylettes;
     white: Stylettes;
     yellow: Stylettes;

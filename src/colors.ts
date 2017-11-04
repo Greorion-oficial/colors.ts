@@ -117,7 +117,7 @@ export class Colors {
     private static applyStyle: (args: string[]) => string = function(args: string[]): string {
         let str: string;
         if (args.length > 1) {
-            str = [...args].join("");
+            str = Array.prototype.slice.call(args).join("");
         }
 
         if (System.colorSupported() || args.length !== 0 && String(arguments[0])) {
@@ -154,7 +154,6 @@ export class Colors {
     public magenta: Stylettes;
     public red: Stylettes;
     public strikethrough: Stylettes;
-    public stripColors: (str: string) => string;
     public underline: Stylettes;
     public white: Stylettes;
     public yellow: Stylettes;
@@ -164,7 +163,6 @@ export class Colors {
 
     constructor() {
         this.styles = new Styles();
-        this.stripColors = this.strip;
         this.ansiStyles = this.styles;
         this.enabled = System.colorSupported();
         this.init();
@@ -172,11 +170,7 @@ export class Colors {
             return colors.strip(this);
         });
 
-        this.stringify("stripColors", function(): string {
-            return colors.strip(this);
-        });
-
-        Object.keys(ansiStyles).forEach((styleName: keyof Styles) => {
+        Object.keys(this.styles).forEach((styleName: keyof Styles) => {
             this.stringify(styleName, function(this) {
                 return colors.stylize(this, styleName);
             });
@@ -198,7 +192,7 @@ export class Colors {
         return stylized;
     }
     public stringify(color: string, func: () => string): any {
-        return Object.defineProperty(String.prototype, color, {get: func});
+        return Object.defineProperty(String.prototype, color, {get: func, configurable: true});
     }
 
     private init(): void {
