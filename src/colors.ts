@@ -208,9 +208,9 @@ export class Colors {
 }
 
 export const colors: Colors = new Colors();
-console.log(colors.red.strikethrough.bgGreen("Shadrack Ndacayisenga"));
-console.log(colors.white.strikethrough.bgGreen("Shadrack Ndacayisenga"));
+console.log(colors.red.strikethrough.bgGreen("Live Test"));
+console.log(colors.white.strikethrough.bgGreen("Live Test"));
 
-console.log("Shadrack Ndacayisenga".white.italic.bgBlack);
-console.log("Shadrack Ndacayisenga".white.bgRed);
-console.log("Shadrack Ndacayisenga".white.bgGreen);
+console.log("Live Test".white.italic.bgBlack);
+console.log("Live Test".white.bgRed);
+console.log("Live Test".white.bgGreen);
