@@ -1,5 +1,4 @@
 import { Styles } from "./styles";
-export declare const ansiStyles: Styles;
 declare global  {
     interface String {
         strip: string;
@@ -89,8 +88,7 @@ export declare class Colors {
     underline: Stylettes;
     white: Stylettes;
     yellow: Stylettes;
-    private ansiStyles;
-    private styles;
+    styles: Styles;
     private enabled;
     constructor();
     strip: (str: string) => string;

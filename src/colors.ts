@@ -30,7 +30,6 @@
 import {Style, Styles} from "./styles";
 import {System} from "./system";
 
-export const ansiStyles: Styles = new Styles();
 declare global {
     // noinspection JSUnusedGlobalSymbols
     interface String {
@@ -103,7 +102,7 @@ export class Colors {
         const builder: Stylettes = (Object as any).assign(function(str: string): string {
             return Colors.applyStyle.apply(builder, arguments);
         }, {_styles: styleKeys});
-        const ansStyleKeys: Array<keyof Styles> = Object.keys(ansiStyles) as Array<keyof Styles>;
+        const ansStyleKeys: Array<keyof Styles> = Object.keys(new Styles()) as Array<keyof Styles>;
         ansStyleKeys.forEach((key) => {
             Object.defineProperty(builder, key, {
                 get() {
@@ -119,14 +118,14 @@ export class Colors {
         if (args.length > 1) {
             str = Array.prototype.slice.call(args).join("");
         }
-
+        const styles = new Styles();
         if (System.colorSupported() || args.length !== 0 && String(arguments[0])) {
             const nestedStyles: string[] = this._styles;
             let i: number = nestedStyles.length;
             while (i !== 0) {
                 i--;
                 const name: string = nestedStyles[i];
-                const code: any = ansiStyles[name];
+                const code: any = styles[name];
                 str = code.open + str.replace(code.closeRe, code.open) + code.close;
             }
         }
@@ -157,13 +156,11 @@ export class Colors {
     public underline: Stylettes;
     public white: Stylettes;
     public yellow: Stylettes;
-    private ansiStyles;
-    private styles: Styles;
+    public styles: Styles;
     private enabled: boolean;
 
     constructor() {
         this.styles = new Styles();
-        this.ansiStyles = this.styles;
         this.enabled = System.colorSupported();
         this.init();
         this.stringify("strip", function(): string {
@@ -208,9 +205,3 @@ export class Colors {
 }
 
 export const colors: Colors = new Colors();
-console.log(colors.red.strikethrough.bgGreen("Live Test"));
-console.log(colors.white.strikethrough.bgGreen("Live Test"));
-
-console.log("Live Test".white.italic.bgBlack);
-console.log("Live Test".white.bgRed);
-console.log("Live Test".white.bgGreen);

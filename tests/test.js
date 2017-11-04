@@ -2,10 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var assert = require("assert");
 var index_1 = require("../lib/index");
-var colors_1 = require("../src/colors");
 var s = "string";
 function a(str, color) {
-    var code = colors_1.ansiStyles[color];
+    var code = index_1.colors.styles[color];
     return "" + code.open + str + code.close;
 }
 function aE(str, color) {
@@ -31,4 +30,9 @@ aE(s, "red");
 aE(s, "yellow");
 assert.equal(s, "string");
 assert.equal(typeof ("astring".red), "string");
+console.log(index_1.colors.red.strikethrough.bgGreen("Live Test"));
+console.log(index_1.colors.white.strikethrough.bgGreen("Live Test"));
+console.log("Live Test".white.italic.bgBlack);
+console.log("Live Test".white.bgRed);
+console.log("Live Test".white.bgGreen);
 //# sourceMappingURL=test.js.map

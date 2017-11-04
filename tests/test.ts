@@ -1,12 +1,10 @@
 import assert = require("assert");
 import {colors} from "../lib/index";
-import {ansiStyles} from "../src/colors";
-import {Style} from "../src/styles";
 
 const s: string = "string";
 
 function a(str: string, color: string) {
-    const code: Style = ansiStyles[color];
+    const code = colors.styles[color];
     return `${code.open}${str}${code.close}`;
 }
 
@@ -37,3 +35,9 @@ aE(s, "yellow");
 assert.equal(s, "string");
 
 assert.equal(typeof("astring".red), "string");
+console.log(colors.red.strikethrough.bgGreen("Live Test"));
+console.log(colors.white.strikethrough.bgGreen("Live Test"));
+
+console.log("Live Test".white.italic.bgBlack);
+console.log("Live Test".white.bgRed);
+console.log("Live Test".white.bgGreen);
