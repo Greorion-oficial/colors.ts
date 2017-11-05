@@ -22,8 +22,8 @@
   "engines": {
     "node": ">=8.1.90"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [],
   "devDependencies": {
     "@types/node": "^8.0.47",

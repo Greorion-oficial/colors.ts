@@ -1,8 +1,6 @@
-# colors.ts  [![Build Status](https://travis-ci.org/shaselle/colors.js.svg?branch=master)](https://travis-ci.org/shaselle/colors.js)
+# Colors.ts  [![Build Status](https://travis-ci.org/shaselle/colors.js.svg?branch=master)](https://travis-ci.org/shaselle/colors.js)
 
 ## get color and style in your node.js console
-
-![Demo](https://raw.githubusercontent.com/Marak/colors.ts/master/screenshots/colors.png)
 
 ## Installation
 
