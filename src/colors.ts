@@ -229,12 +229,12 @@ export class Colors {
     }
 }
 
-export function colors(str?: string): Colors {
+export default function color(str?: string): Colors {
     return (new Colors(str));
 }
 
-export function print(color: Colors) {
-    console.log(color.toString());
+export function echo(colorSting: Colors) {
+    console.log(colorSting.toString());
 }
 
 // print(colors("Shadrack").bgGreen.white.bold.strikethrough);

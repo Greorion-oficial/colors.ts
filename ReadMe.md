@@ -1,6 +1,6 @@
 # Colors.ts  [![Build Status](https://travis-ci.org/shaselle/colors.ts.svg?branch=master)](https://travis-ci.org/shaselle/colors.js)
 
-## get color and style in your node.js console
+## Get colors and style in your node.js console
 
 ## Installation
 
@@ -35,7 +35,7 @@
 ### styles
 
   - reset
-  - bold
+  - <span style="font-weight:700;">bold</span>
   - dim
   - italic
   - underline
@@ -43,29 +43,28 @@
   - hidden
   - strikethrough
 
-## Usage
+## Usage methods
+#### 1. JavaScript
+##### i. Normal String extension.
 
 ```js
-var colors = require('colors');
+require('colorts/string');
 
-console.log('hello'.green); // outputs green text
+console.log('hello'.green);                       // outputs green text
 console.log('i like cake and pies'.underline.red) // outputs red underlined text
-console.log('inverse the color'.inverse); // inverses the color
-console.log('OMG Rainbows!'.rainbow); // rainbow
-console.log('Run the trap'.trap); // Drops the bass
+console.log('inverse the color'.inverse);         // inverses the color
 
 ```
 
-or a slightly less nifty way which doesn't extend `String.prototype`
+##### ii. Direct color method
 
 ```js
-var colors = require('colors/safe');
+let color = require('colorts');
+let echo = require('colorts').echo;
 
-console.log(colors.green('hello')); // outputs green text
-console.log(colors.red.underline('i like cake and pies')) // outputs red underlined text
-console.log(colors.inverse('inverse the color')); // inverses the color
-console.log(colors.rainbow('OMG Rainbows!')); // rainbow
-console.log(colors.trap('Run the trap')); // Drops the bass
+console.log(colors('hello').green + "");                           // outputs green text
+console.log(colors('i like cake and pies').red.underline.toString) // outputs red underlined text
+echo(colors('inverse the color').inverse);                         // you can use echo to console.log safe colorts
 
 ```
 
@@ -80,12 +79,4 @@ To disable colors you can pass the following arguments in the command line to yo
 
 ```bash
 node myapp.js --no-color
-```
-
-## Console.log [string substitution](http://nodejs.org/docs/latest/api/console.html#console_console_log_data)
-
-```js
-var name = 'Marak';
-console.log(colors.green('Hello %s'), name);
-// outputs -> 'Hello Marak'
 ```

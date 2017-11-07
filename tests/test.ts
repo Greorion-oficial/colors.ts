@@ -1,20 +1,16 @@
 import assert = require("assert");
-import {colors, print, styles} from "../lib/index";
+import {styles} from "../lib/colors";
 import "../lib/string";
 
 const s: string = "string";
 
-function a(str: string, color: string) {
-    const code = styles[color];
+function a(str: string, style: string) {
+    const code = styles[style];
     return `${code.open}${str}${code.close}`;
 }
 
-function aE(str: string, color: string) {
-    assert.equal(s[color], a(str, color));
-    assert.equal(colors(s)[color], a(str, color));
-    assert.equal(s[color], colors(str)[color]);
-    assert.equal(colors(str).strip.toString(), str);
-    assert.equal(colors(str).strip.toString(), str);
+function aE(str: string, style: string) {
+    assert.equal(s[style], a(str, style));
 }
 
 assert.equal(s.bold, `\x1B[1m${s}\x1B[22m`);
@@ -36,9 +32,6 @@ aE(s, "yellow");
 assert.equal(s, "string");
 
 assert.equal(typeof("astring".red), "string");
-console.log(colors("Live Test").red.strikethrough.bgGreen.toString());
-print(colors("Live Test").white.strikethrough.bgBlue);
-
 console.log("Live Test".white.italic.bgBlack);
 console.log("Live Test".white.bgRed);
 console.log("Live Test".white.bgGreen);

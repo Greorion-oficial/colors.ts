@@ -44,5 +44,5 @@ export declare class Colors {
     private init();
     private escapeStringRegexp(str);
 }
-export declare function colors(str?: string): Colors;
-export declare function print(color: Colors): void;
+export default function color(str?: string): Colors;
+export declare function echo(colorSting: Colors): void;

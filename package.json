@@ -17,13 +17,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "node tests/test.js"
+    "test": "node tests/test.js && node tests/safe_test.js"
   },
   "engines": {
     "node": ">=8.1.90"
   },
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/colors.js",
+  "types": "lib/colors.d.ts",
   "files": ["lib"],
   "devDependencies": {
     "@types/node": "^8.0.47",

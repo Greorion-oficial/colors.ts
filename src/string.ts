@@ -1,4 +1,4 @@
-import {colors, styles} from "./colors";
+import color, {styles} from "./colors";
 
 declare global {
     // noinspection JSUnusedGlobalSymbols
@@ -34,16 +34,16 @@ declare global {
     }
 }
 
-function stringify(color: string, func: () => string): any {
-    return Object.defineProperty(String.prototype, color, {get: func, configurable: true});
+function stringify(colorStyle: string, func: () => string): any {
+    return Object.defineProperty(String.prototype, colorStyle, {get: func, configurable: true});
 }
 
 stringify("strip", function(): string {
-    return (colors(this)).strip.toString();
+    return (color(this)).strip.toString();
 });
 
 Object.keys(styles).forEach((styleName: string) => {
     stringify(styleName, function() {
-        return colors(this)[styleName] + "";
+        return color(this)[styleName].toString();
     });
 });

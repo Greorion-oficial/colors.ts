@@ -1,19 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var assert = require("assert");
-var index_1 = require("../lib/index");
+var colors_1 = require("../lib/colors");
 require("../lib/string");
 var s = "string";
-function a(str, color) {
-    var code = index_1.styles[color];
+function a(str, style) {
+    var code = colors_1.styles[style];
     return "" + code.open + str + code.close;
 }
-function aE(str, color) {
-    assert.equal(s[color], a(str, color));
-    assert.equal(index_1.colors(s)[color], a(str, color));
-    assert.equal(s[color], index_1.colors(str)[color]);
-    assert.equal(index_1.colors(str).strip.toString(), str);
-    assert.equal(index_1.colors(str).strip.toString(), str);
+function aE(str, style) {
+    assert.equal(s[style], a(str, style));
 }
 assert.equal(s.bold, "\u001B[1m" + s + "\u001B[22m");
 assert.equal(s.italic, "\u001B[3m" + s + "\u001B[23m");
@@ -31,8 +27,6 @@ aE(s, "red");
 aE(s, "yellow");
 assert.equal(s, "string");
 assert.equal(typeof ("astring".red), "string");
-console.log(index_1.colors("Live Test").red.strikethrough.bgGreen.toString());
-index_1.print(index_1.colors("Live Test").white.strikethrough.bgBlue);
 console.log("Live Test".white.italic.bgBlack);
 console.log("Live Test".white.bgRed);
 console.log("Live Test".white.bgGreen);
