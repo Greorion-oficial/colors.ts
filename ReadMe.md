@@ -48,7 +48,7 @@
 ##### i. Normal String extension.
 
 ```ts
-import 'colorts/string';
+import 'colorts/lib/string';
 
 console.log('hello'.green);                       // outputs green text
 console.log('i like cake and pies'.underline.red) // outputs red underlined text
@@ -72,7 +72,7 @@ echo(colors('inverse the color').inverse);                         // you can us
 ##### i. Normal String extension.
 
 ```js
-require('colorts/string');
+require('colorts/lib/string');
 
 console.log('hello'.green);                       // outputs green text
 console.log('i like cake and pies'.underline.red) // outputs red underlined text
