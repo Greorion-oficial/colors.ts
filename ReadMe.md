@@ -44,7 +44,31 @@
   - strikethrough
 
 ## Usage methods
-#### 1. JavaScript
+#### 1. TypeScript
+##### i. Normal String extension.
+
+```js
+import 'colorts/string';
+
+console.log('hello'.green);                       // outputs green text
+console.log('i like cake and pies'.underline.red) // outputs red underlined text
+console.log('inverse the color'.inverse);         // inverses the color
+
+```
+
+##### ii. Direct color method
+
+```js
+import color from 'colorts';
+import {echo} from 'colorts';
+
+console.log(colors('hello').green + "");                           // outputs green text
+console.log(colors('i like cake and pies').red.underline.toString) // outputs red underlined text
+echo(colors('inverse the color').inverse);                         // you can use echo to console.log safe colorts
+
+```
+
+#### 2. JavaScript
 ##### i. Normal String extension.
 
 ```js
