@@ -1,7 +1,7 @@
 {
   "name": "colorts",
   "description": "Colors in node Js console",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Shadrack Ndacayisenga",
   "homepage": "https://github.com/shaselle/colors.js",
   "bugs": {
@@ -22,8 +22,8 @@
   "engines": {
     "node": ">=8.1.90"
   },
-  "main": "lib/colors.js",
-  "types": "lib/colors.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": ["lib"],
   "devDependencies": {
     "@types/node": "^8.0.47",

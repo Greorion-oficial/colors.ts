@@ -36,4 +36,3 @@ index_1.print(index_1.colors("Live Test").white.strikethrough.bgBlue);
 console.log("Live Test".white.italic.bgBlack);
 console.log("Live Test".white.bgRed);
 console.log("Live Test".white.bgGreen);
-//# sourceMappingURL=test.js.map
