@@ -23,7 +23,7 @@
 
 ### background colors
 
-  - bgBlack
+  - <span style="color:white;background:black">bgBlack</span>
   - bgRed
   - bgGreen
   - bgYellow
