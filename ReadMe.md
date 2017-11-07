@@ -47,7 +47,7 @@
 #### 1. TypeScript
 ##### i. Normal String extension.
 
-```js
+```ts
 import 'colorts/string';
 
 console.log('hello'.green);                       // outputs green text
@@ -58,7 +58,7 @@ console.log('inverse the color'.inverse);         // inverses the color
 
 ##### ii. Direct color method
 
-```js
+```ts
 import color from 'colorts';
 import {echo} from 'colorts';
 
