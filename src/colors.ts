@@ -27,181 +27,214 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  */
-import {Style, Styles} from "./styles";
 import {System} from "./system";
 
-declare global {
-    // noinspection JSUnusedGlobalSymbols
-    interface String {
-        strip: string;
-        stripColors: string;
-        bgBlack: string;
-        bgBlue: string;
-        bgCyan: string;
-        bgGreen: string;
-        bgMagenta: string;
-        bgRed: string;
-        bgWhite: string;
-        bgYellow: string;
-        black: string;
-        blue: string;
-        bold: string;
-        cyan: string;
-        dim: string;
-        gray: string;
-        green: string;
-        grey: string;
-        hidden: string;
-        inverse: string;
-        italic: string;
-        magenta: string;
-        red: string;
-        reset: string;
-        strikethrough: string;
-        underline: string;
-        white: string;
-        yellow: string;
-    }
+export interface Style {
+    open: string;
+    close: string;
+    closeRe?: RegExp;
 }
 
-export interface Stylettes {
-    (str: string): string;
-
-    bgBlue?: Stylettes;
-    bgCyan?: Stylettes;
-    bgGreen?: Stylettes;
-    bgMagenta?: Stylettes;
-    bgRed?: Stylettes;
-    bgWhite?: Stylettes;
-    bgYellow?: Stylettes;
-    black?: Stylettes;
-    blue?: Stylettes;
-    bold?: Stylettes;
-    cyan?: Stylettes;
-    dim?: Stylettes;
-    gray?: Stylettes;
-    green?: Stylettes;
-    grey?: Stylettes;
-    hidden?: Stylettes;
-    inverse?: Stylettes;
-    italic?: Stylettes;
-    magenta?: Stylettes;
-    red?: Stylettes;
-    reset?: Stylettes;
-    strikethrough?: Stylettes;
-    underline?: Stylettes;
-    white?: Stylettes;
-    yellow?: Stylettes;
-    _styles: Array<keyof Styles>;
-
-    toString(): string;
-}
+export const styles: { [key: string]: Style } = {
+    bgBlack: {open: "\u001b[40m", close: "\u001b[49m"},
+    bgBlue: {open: "\u001b[44m", close: "\u001b[49m"},
+    bgCyan: {open: "\u001b[46m", close: "\u001b[49m"},
+    bgGreen: {open: "\u001b[42m", close: "\u001b[49m"},
+    bgMagenta: {open: "\u001b[45m", close: "\u001b[49m"},
+    bgRed: {open: "\u001b[41m", close: "\u001b[49m"},
+    bgWhite: {open: "\u001b[47m", close: "\u001b[49m"},
+    bgYellow: {open: "\u001b[43m", close: "\u001b[49m"},
+    black: {open: "\u001b[30m", close: "\u001b[39m"},
+    blue: {open: "\u001b[34m", close: "\u001b[39m"},
+    bold: {open: "\u001b[1m", close: "\u001b[22m"},
+    cyan: {open: "\u001b[36m", close: "\u001b[39m"},
+    dim: {open: "\u001b[2m", close: "\u001b[22m"},
+    gray: {open: "\u001b[90m", close: "\u001b[39m"},
+    green: {open: "\u001b[32m", close: "\u001b[39m"},
+    grey: {open: "\u001b[90m", close: "\u001b[39m"},
+    hidden: {open: "\u001b[8m", close: "\u001b[28m"},
+    inverse: {open: "\u001b[7m", close: "\u001b[27m"},
+    italic: {open: "\u001b[3m", close: "\u001b[23m"},
+    magenta: {open: "\u001b[35m", close: "\u001b[39m"},
+    red: {open: "\u001b[31m", close: "\u001b[39m"},
+    reset: {open: "\u001b[0m", close: "\u001b[0m"},
+    strikethrough: {open: "\u001b[9m", close: "\u001b[29m"},
+    underline: {open: "\u001b[4m", close: "\u001b[24m"},
+    white: {open: "\u001b[37m", close: "\u001b[39m"},
+    yellow: {open: "\u001b[33m", close: "\u001b[39m"},
+};
 
 export class Colors {
-    private static build(styleKeys: Array<keyof Styles>) {
-        const builder: Stylettes = (Object as any).assign(function(str: string): string {
-            return Colors.applyStyle.apply(builder, arguments);
-        }, {_styles: styleKeys});
-        const ansStyleKeys: Array<keyof Styles> = Object.keys(new Styles()) as Array<keyof Styles>;
-        ansStyleKeys.forEach((key) => {
-            Object.defineProperty(builder, key, {
-                get() {
-                    return Colors.build(this._styles.concat(key));
-                },
-            });
-        });
-        return builder;
+    public get bgBlack(): Colors {
+        this.stylize("bgBlack");
+        return this;
     }
 
-    private static applyStyle: (args: string[]) => string = function(args: string[]): string {
-        let str: string;
-        if (args.length > 1) {
-            str = Array.prototype.slice.call(args).join("");
-        }
-        const styles = new Styles();
-        if (System.colorSupported() || args.length !== 0 && String(arguments[0])) {
-            const nestedStyles: string[] = this._styles;
-            let i: number = nestedStyles.length;
-            while (i !== 0) {
-                i--;
-                const name: string = nestedStyles[i];
-                const code: any = styles[name];
-                str = code.open + str.replace(code.closeRe, code.open) + code.close;
-            }
-        }
+    public get bgBlue(): Colors {
+        this.stylize("bgBlue");
+        return this;
+    }
 
-        return str;
-    };
-    public bgBlack: Stylettes;
-    public bgBlue: Stylettes;
-    public bgCyan: Stylettes;
-    public bgGreen: Stylettes;
-    public bgMagenta: Stylettes;
-    public bgRed: Stylettes;
-    public bgWhite: Stylettes;
-    public bgYellow: Stylettes;
-    public black: Stylettes;
-    public blue: Stylettes;
-    public bold: Stylettes;
-    public cyan: Stylettes;
-    public dim: Stylettes;
-    public gray: Stylettes;
-    public green: Stylettes;
-    public grey: Stylettes;
-    public inverse: Stylettes;
-    public italic: Stylettes;
-    public magenta: Stylettes;
-    public red: Stylettes;
-    public strikethrough: Stylettes;
-    public underline: Stylettes;
-    public white: Stylettes;
-    public yellow: Stylettes;
-    public styles: Styles;
+    public get bgCyan(): Colors {
+        this.stylize("bgCyan");
+        return this;
+    }
+
+    public get bgMagenta(): Colors {
+        this.stylize("bgMagenta");
+        return this;
+    }
+
+    public get bgRed(): Colors {
+        this.stylize("bgRed");
+        return this;
+    }
+
+    public get bgWhite(): Colors {
+        this.stylize("bgWhite");
+        return this;
+    }
+
+    public get bgYellow(): Colors {
+        this.stylize("bgYellow");
+        return this;
+    }
+
+    public get black(): Colors {
+        this.stylize("black");
+        return this;
+    }
+
+    public get blue(): Colors {
+        this.stylize("blue");
+        return this;
+    }
+
+    public get bold(): Colors {
+        this.stylize("bold");
+        return this;
+    }
+
+    public get cyan(): Colors {
+        this.stylize("cyan");
+        return this;
+    }
+
+    public get dim(): Colors {
+        this.stylize("dim");
+        return this;
+    }
+
+    public get gray(): Colors {
+        this.stylize("gray");
+        return this;
+    }
+
+    public get green(): Colors {
+        this.stylize("green");
+        return this;
+    }
+
+    public get grey(): Colors {
+        this.stylize("grey");
+        return this;
+    }
+
+    public get inverse(): Colors {
+        this.stylize("inverse");
+        return this;
+    }
+
+    public get italic(): Colors {
+        this.stylize("italic");
+        return this;
+    }
+
+    public get magenta(): Colors {
+        this.stylize("magenta");
+        return this;
+    }
+
+    public get red(): Colors {
+        this.stylize("red");
+        return this;
+    }
+
+    public get strikethrough(): Colors {
+        this.stylize("strikethrough");
+        return this;
+    }
+
+    public get underline(): Colors {
+        this.stylize("underline");
+        return this;
+    }
+
+    public get yellow(): Colors {
+        this.stylize("yellow");
+        return this;
+    }
+
+    public get strip(): Colors {
+        this.str = (`${this.str}`).replace(/\x1B\[\d+m/g, "");
+        return this;
+    }
+
+    public get bgGreen(): Colors {
+        this.stylize("bgGreen");
+        return this;
+    }
+
+    public get white(): Colors {
+        this.stylize("white");
+        return this;
+    }
+
+    public styles: { [key: string]: Style } = styles;
     private enabled: boolean;
+    private styleKeys: string[];
 
-    constructor() {
-        this.styles = new Styles();
-        this.enabled = System.colorSupported();
+    constructor(private str: string = "") {
         this.init();
-        this.stringify("strip", function(): string {
-            return colors.strip(this);
-        });
-
-        Object.keys(this.styles).forEach((styleName: keyof Styles) => {
-            this.stringify(styleName, function(this) {
-                return colors.stylize(this, styleName);
-            });
-        });
     }
 
-    public strip: (str: string) => string = (str: string): string => {
-        return (`${str}`).replace(/\x1B\[\d+m/g, "");
-    }
-
-    public stylize(str: string, style: keyof Styles): string {
+    public stylize(style: string): string {
         const code: Style = this.styles[style];
-        let stylized: string;
         if (this.enabled) {
-            stylized = code.open + str.replace(code.closeRe, code.open) + code.close;
-        } else {
-            stylized = `${str}`;
+
+            this.str = code.open + this.str.replace(code.closeRe, code.open) + code.close;
         }
-        return stylized;
+        return this.str;
     }
-    public stringify(color: string, func: () => string): any {
-        return Object.defineProperty(String.prototype, color, {get: func, configurable: true});
+
+    public toString(): string {
+        return this.str;
     }
 
     private init(): void {
-        const styleKeys: Array<keyof Styles> = Object.keys(this.styles) as Array<keyof Styles>;
-        styleKeys.forEach((name: keyof Styles) => {
-            Object.defineProperty(this, name, {
-                get() {
-                    return Colors.build([name]);
-                },
-            });
+        this.enabled = System.colorSupported();
+        this.styleKeys = Object.keys(this.styles);
+        this.styleKeys.forEach((key: string) => {
+            this.styles[key].closeRe = new RegExp(this.escapeStringRegexp(this.styles[key].close), "g");
         });
+    }
+
+    // noinspection JSMethodCanBeStatic
+    private escapeStringRegexp(str: string) {
+        if (typeof str !== "string") {
+
+            throw new TypeError("Expected a string.");
+        }
+        return str.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&");
     }
 }
 
-export const colors: Colors = new Colors();
+export function colors(str?: string): Colors {
+    return (new Colors(str));
+}
+
+export function print(color: Colors) {
+    console.log(color.toString());
+}
+
+// print(colors("Shadrack").bgGreen.white.bold.strikethrough);

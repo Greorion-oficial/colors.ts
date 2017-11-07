@@ -1,1 +1,1 @@
-export { colors } from "./colors";
+export { colors, styles, print } from "./colors";
