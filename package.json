@@ -1,7 +1,7 @@
 {
   "name": "colorts",
   "description": "Colors in node Js console",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Shadrack Ndacayisenga",
   "homepage": "https://github.com/shaselle/colors.js",
   "bugs": {
