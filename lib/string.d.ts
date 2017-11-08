@@ -28,6 +28,13 @@ declare global  {
         underline: string;
         white: string;
         yellow: string;
+        capitalize: string;
+        upperCamelCase: string;
+        lowerCamelCase: string;
+        title: string;
+        snakeCase: string;
+        kebabCase: string;
+        StUdLyCaPs: string;
     }
 }
 export {};

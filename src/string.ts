@@ -31,6 +31,13 @@ declare global {
         underline: string;
         white: string;
         yellow: string;
+        capitalize: string;
+        upperCamelCase: string;
+        lowerCamelCase: string;
+        title: string;
+        snakeCase: string;
+        kebabCase: string;
+        StUdLyCaPs: string;
     }
 }
 
@@ -40,6 +47,47 @@ function stringify(colorStyle: string, func: () => string): any {
 
 stringify("strip", function(): string {
     return (color(this)).strip.toString();
+});
+
+stringify("capitalize", function(): string {
+    return this.split(" ").map((value: string) => {
+        return value[0].toUpperCase() + value.slice(2);
+    }).join(" ");
+});
+
+stringify("upperCamelCase", function(): string {
+    return this.split(" ").map((value: string) => {
+        return value[0].toUpperCase() + value.slice(2).toLowerCase();
+    }).join("");
+});
+
+stringify("lowerCamelCase", function(): string {
+    return this.upperCamelCase[0].toLowerCase();
+});
+
+stringify("title", function(): string {
+    return this.split(" ").map((value: string) => {
+        return value[0].toUpperCase() + value.slice(2).toLowerCase();
+    }).join("");
+});
+
+stringify("snakeCase", function(): string {
+    return this.toLowerCase().split(" ").join("_");
+});
+
+stringify("kebabCase", function(): string {
+    return this.toLowerCase().split(" ").join("-");
+});
+
+stringify("StUdLyCaPs", function(): string {
+    return this.split(" ").join("")
+        .split("").map((letter: string) => {
+        if ( letter in ["a", "e", "i", "o", "u"]) {
+            return letter.toLowerCase();
+        } else {
+            return letter.toUpperCase();
+        }
+    });
 });
 
 Object.keys(styles).forEach((styleName: string) => {
