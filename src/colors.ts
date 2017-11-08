@@ -39,7 +39,9 @@ export const styles: { [key: string]: Style } = {
     bgBlack: {open: "\u001b[40m", close: "\u001b[49m"},
     bgBlue: {open: "\u001b[44m", close: "\u001b[49m"},
     bgCyan: {open: "\u001b[46m", close: "\u001b[49m"},
+    bgGray: {open: "\u001b[90m", close: "\u001b[49m"},
     bgGreen: {open: "\u001b[42m", close: "\u001b[49m"},
+    bgGrey: {open: "\u001b[90m", close: "\u001b[49m"},
     bgMagenta: {open: "\u001b[45m", close: "\u001b[49m"},
     bgRed: {open: "\u001b[41m", close: "\u001b[49m"},
     bgWhite: {open: "\u001b[47m", close: "\u001b[49m"},
@@ -77,6 +79,21 @@ export class Colors {
 
     public get bgCyan(): Colors {
         this.stylize("bgCyan");
+        return this;
+    }
+
+    public get bgGray(): Colors {
+        this.stylize("bgGray");
+        return this;
+    }
+
+    public get bgGreen(): Colors {
+        this.stylize("bgGreen");
+        return this;
+    }
+
+    public get bgGrey(): Colors {
+        this.stylize("bgGrey");
         return this;
     }
 
@@ -177,11 +194,6 @@ export class Colors {
 
     public get strip(): Colors {
         this.str = (`${this.str}`).replace(/\x1B\[\d+m/g, "");
-        return this;
-    }
-
-    public get bgGreen(): Colors {
-        this.stylize("bgGreen");
         return this;
     }
 

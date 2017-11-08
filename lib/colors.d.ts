@@ -11,6 +11,9 @@ export declare class Colors {
     readonly bgBlack: Colors;
     readonly bgBlue: Colors;
     readonly bgCyan: Colors;
+    readonly bgGray: Colors;
+    readonly bgGreen: Colors;
+    readonly bgGrey: Colors;
     readonly bgMagenta: Colors;
     readonly bgRed: Colors;
     readonly bgWhite: Colors;
@@ -31,7 +34,6 @@ export declare class Colors {
     readonly underline: Colors;
     readonly yellow: Colors;
     readonly strip: Colors;
-    readonly bgGreen: Colors;
     readonly white: Colors;
     styles: {
         [key: string]: Style;

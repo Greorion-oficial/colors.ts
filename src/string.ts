@@ -8,7 +8,9 @@ declare global {
         bgBlack: string;
         bgBlue: string;
         bgCyan: string;
+        bgGray: string;
         bgGreen: string;
+        bgGrey: string;
         bgMagenta: string;
         bgRed: string;
         bgWhite: string;
@@ -32,12 +34,13 @@ declare global {
         white: string;
         yellow: string;
         capitalize: string;
+        camelCase: string;
         upperCamelCase: string;
         lowerCamelCase: string;
-        title: string;
+        titleCase: string;
         snakeCase: string;
         kebabCase: string;
-        StUdLyCaPs: string;
+        studlyCaps: string;
     }
 }
 
@@ -50,25 +53,26 @@ stringify("strip", function(): string {
 });
 
 stringify("capitalize", function(): string {
+    return this[0].toUpperCase() + this.slice(1);
+});
+
+stringify("titleCase", function(): string {
     return this.split(" ").map((value: string) => {
-        return value[0].toUpperCase() + value.slice(2);
+        return value[0].toUpperCase() + value.slice(1).toLowerCase();
     }).join(" ");
 });
 
 stringify("upperCamelCase", function(): string {
-    return this.split(" ").map((value: string) => {
-        return value[0].toUpperCase() + value.slice(2).toLowerCase();
-    }).join("");
+    return this.titleCase.split(" ").join("");
 });
 
 stringify("lowerCamelCase", function(): string {
-    return this.upperCamelCase[0].toLowerCase();
+    const s: string = this.upperCamelCase;
+    return s[0].toLowerCase() + s.slice(1);
 });
 
-stringify("title", function(): string {
-    return this.split(" ").map((value: string) => {
-        return value[0].toUpperCase() + value.slice(2).toLowerCase();
-    }).join("");
+stringify("camelCase", function(): string {
+    return this.lowerCamelCase;
 });
 
 stringify("snakeCase", function(): string {
@@ -79,15 +83,15 @@ stringify("kebabCase", function(): string {
     return this.toLowerCase().split(" ").join("-");
 });
 
-stringify("StUdLyCaPs", function(): string {
-    return this.split(" ").join("")
-        .split("").map((letter: string) => {
-        if ( letter in ["a", "e", "i", "o", "u"]) {
+stringify("studlyCaps", function(): string {
+    const s: string = this.camelCase.replace(" ", "");
+    return s.split("").map((letter: string, index: number) => {
+        if (index % 2 !== 0) {
             return letter.toLowerCase();
         } else {
             return letter.toUpperCase();
         }
-    });
+    }).join("");
 });
 
 Object.keys(styles).forEach((styleName: string) => {

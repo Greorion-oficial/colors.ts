@@ -104,3 +104,57 @@ To disable colors you can pass the following arguments in the command line to yo
 ```bash
 node myapp.js --no-color
 ```
+
+## Bonus String Letter case Methods
+
+- capitalize
+```js
+    "james is a nice guy.".capitalize // James is nice guy.
+    " no one home.".capitalize       //  No one home.
+    "typescript".capitalize         // Typescript
+    "1st january 2018".capitalize  // 1st january 2018
+```
+- titleCase
+```js
+    "james is a nice guy.".titleCase // James Is Nice Guy.
+    " no one home.".titleCase       //  No One Home.
+    "tYpe scrIpt".titleCase        // Type Script
+    "1st january".titleCase       // 1st January 2018
+```
+- camelCase
+```js
+    "james is a nice guy.".camelCase // jamesIsANiceGuy.
+    " no one home.".camelCase       //  nOneHome.
+    "type script".camelCase        // typeScript
+```
+- upperCamelCase
+```js
+    "james is a nice guy.".upperCamelCase // JamesIsANiceGuy.
+    " no one home.".upperCamelCase       //  NOneHome.
+    "type script".upperCamelCase        // TypeScript
+```
+- lowerCamelCase
+```js
+    "james is a nice guy.".lowerCamelCase // jamesIsANiceGuy.
+    " no one home.".lowerCamelCase       //  nOneHome.
+    "type script".lowerCamelCase        // typeScript
+```
+
+- snakeCase
+```js
+    "james is a nice guy.".snakeCase // james_is_nice_guy.
+    " no one home.".snakeCase //  no_one_home.
+    "super type script".snakeCase  // super_type_script
+```
+- kebabCase
+```js
+    "James is a nice guy.".kebabCase // james-is-nice-guy.
+    " no one home.".kebabCase //  no-one-home.
+    "super type script".kebabCase  // super-type-script
+```
+- studlyCaps
+```js
+    "james is a nice guy.".studlyCaps // JaMeSiSnIcEgUy.
+    " no one home.".studlyCaps //  NoOnEhOmE.
+    "super type script".studlyCaps  // SuPeRtYpEsCrIpT
+```

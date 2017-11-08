@@ -5,7 +5,9 @@ declare global  {
         bgBlack: string;
         bgBlue: string;
         bgCyan: string;
+        bgGray: string;
         bgGreen: string;
+        bgGrey: string;
         bgMagenta: string;
         bgRed: string;
         bgWhite: string;
@@ -29,12 +31,13 @@ declare global  {
         white: string;
         yellow: string;
         capitalize: string;
+        camelCase: string;
         upperCamelCase: string;
         lowerCamelCase: string;
-        title: string;
+        titleCase: string;
         snakeCase: string;
         kebabCase: string;
-        StUdLyCaPs: string;
+        studlyCaps: string;
     }
 }
 export {};
