@@ -1,4 +1,5 @@
 # Colors.ts  [![Build Status](https://travis-ci.org/shaselle/colors.ts.svg?branch=master)](https://travis-ci.org/shaselle/colors.ts)
+[![Color.ts](https://user-images.githubusercontent.com/23441098/32871016-87f23ba4-ca33-11e7-879f-b04e689ad289.png)](https://github.com/shaselle/colors.ts)
 
 ## Write beautifully colored and styled text in Node.js terminal.
 Installing and using **Colorts** is a breeze; in both a TypeScript and JavaScript.
