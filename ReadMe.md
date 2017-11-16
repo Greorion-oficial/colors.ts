@@ -6,7 +6,11 @@ Installing and using **Colorts** is a breeze; in both a TypeScript and JavaScrip
 
 ## Installation
 
-    npm install colorts
+```bash 
+
+npm install colorts
+
+```
 
 ## colors and styles!
 
@@ -23,7 +27,7 @@ Installing and using **Colorts** is a breeze; in both a TypeScript and JavaScrip
   - gray
   - grey
 
-### background colors
+### text background colors
 
   - <span style="color:white;background:black">bgBlack</span>
   - bgRed
@@ -34,7 +38,7 @@ Installing and using **Colorts** is a breeze; in both a TypeScript and JavaScrip
   - bgCyan
   - bgWhite
 
-### styles
+### text styles
 
   - reset
   - <span style="font-weight:700;">bold</span>
